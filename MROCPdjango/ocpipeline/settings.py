@@ -57,6 +57,11 @@ MEDIA_ROOT = '/data/projects/disa/OCPprojects/'
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
 MEDIA_URL = '/data/projects/disa/OCPprojects/'
 
+# DM 10/09/2012
+# MRCAP code directory where graph building code is store
+PROCESSING_SCRIPTS = os.path.join(os.path.abspath(os.path.curdir),'/ocpipeline/mrcap/')
+print (PROCESSING_SCRIPTS)
+
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
