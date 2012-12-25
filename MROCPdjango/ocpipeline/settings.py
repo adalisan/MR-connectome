@@ -161,3 +161,18 @@ LOGGING = {
         },
     }
 }
+
+# For invariant types
+# The following are valid fileTypes:
+# 1.'cc'|'clustCoeff' is the clustering coefficient
+# 2.'deg'|'degree' is the local vertex degree
+# 3.'eig'|'eigen' is the eigenvalues
+# 4.'mad':'maxAvgDeg'
+# 5.'ss1': 'scanStat1'
+# 6.'tri':'triangle',
+# 7.'fg':'fibergraph'
+
+EQUIV_NP_ARRAYS = {'cc':'clustCoeff', 'deg':'degree', 'eig':'eigen',
+                    'ss1': 'scanStat1','tri':'triangle'}
+
+
