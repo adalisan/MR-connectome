@@ -164,15 +164,24 @@ LOGGING = {
 
 # For invariant types
 # The following are valid fileTypes:
+# 0. 'lcc'|'lrgstConnComp' is largest connected component
 # 1.'cc'|'clustCoeff' is the clustering coefficient
 # 2.'deg'|'degree' is the local vertex degree
 # 3.'eig'|'eigen' is the eigenvalues
-# 4.'mad':'maxAvgDeg'
-# 5.'ss1': 'scanStat1'
-# 6.'tri':'triangle',
-# 7.'fg':'fibergraph'
+# 4.'mad'|'maxAvgDeg' is the maximum average degree
+# 5.'ss1'| 'scanStat1' is the scan statistic 1
+# 6.'ss2'| 'scanStat2' is the scan statistic 2
+# 7.'tri'|'triangle' is the triangle count
+# 8.'fg'|'fibergraph' is a fibergraph built by gengraph.py
+# 9.'apl'|'avePathLen' is the avergae path length
+# 10. 'svd'|'singValDecomp' is the single value decomposition embedding
 
-EQUIV_NP_ARRAYS = {'cc':'clustCoeff', 'deg':'degree', 'eig':'eigen',
-                    'ss1': 'scanStat1','tri':'triangle'}
+EQUIV_NP_ARRAYS = {'cc':'clustCoeff', 'deg':'degree', 'eig':'eigen', 'apl':'avePathLen',
+                    'ss1': 'scanStat1','ss2': 'scanStat2','tri':'triangle','svd':'singValDecomp'}
+
+VALID_FILE_TYPES = EQUIV_NP_ARRAYS
+VALID_FILE_TYPES['mad'] = 'maxAvgDeg'
+VALID_FILE_TYPES['fg'] = 'fibergraph'
+VALID_FILE_TYPES['lcc'] = 'lrgstConnComp'
 
 
