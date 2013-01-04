@@ -55,7 +55,13 @@ MEDIA_ROOT = '/data/projects/disa/OCPprojects/'
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = '/data/projects/disa/OCPprojects/'
+MEDIA_URL = '/OCPprojects/'
+
+# Directory containing templates
+if os.path.exists('/Users/dmhembere44/MR-connectome/MROCPdjango/ocpipeline/templates/'):
+    TEMPLATE_DIR = '/Users/dmhembere44/MR-connectome/MROCPdjango/ocpipeline/templates/'
+else:
+    TEMPLATE_DIR = '/home/disa/MR-connectome/MROCPdjango/ocpipeline/templates/'
 
 # DM 10/09/2012
 # MRCAP code directory where graph building code is store
@@ -184,5 +190,3 @@ VALID_FILE_TYPES = EQUIV_NP_ARRAYS
 VALID_FILE_TYPES['mad'] = 'maxAvgDeg'
 VALID_FILE_TYPES['fg'] = 'fibergraph'
 VALID_FILE_TYPES['lcc'] = 'lrgstConnComp'
-
-
