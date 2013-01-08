@@ -1,4 +1,10 @@
-# Django settings for myapp project.
+"""
+@author: Disa Mhembere
+@organization: Johns Hopkins University
+@contact: disa@jhu.edu
+
+@summary: A module containing the settings for the django project
+"""
 import os.path
 
 DEBUG = True
