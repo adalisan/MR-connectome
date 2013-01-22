@@ -180,7 +180,7 @@ LOGGING = {
 # 0. 'lcc'|'lrgstConnComp' is largest connected component
 # 1.'cc'|'clustCoeff' is the clustering coefficient
 # 2.'deg'|'degree' is the local vertex degree
-# 3.'eig'|'eigen' is the eigenvalues
+# 3.'eig'|'eigen' is the eigenvalues AND eigenvectors
 # 4.'mad'|'maxAvgDeg' is the maximum average degree
 # 5.'ss1'| 'scanStat1' is the scan statistic 1
 # 6.'ss2'| 'scanStat2' is the scan statistic 2
