@@ -112,11 +112,11 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-#    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
 ROOT_URLCONF = 'ocpipeline.urls'
@@ -139,7 +139,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ocpipeline', # Disa
+    'ocpipeline', # DM
+    'registration', # DM
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -197,3 +198,14 @@ VALID_FILE_TYPES['mad'] = 'maxAvgDeg'
 VALID_FILE_TYPES['fg'] = 'fibergraph'
 VALID_FILE_TYPES['lcc'] = 'lrgstConnComp'
 VALID_FILE_TYPES['gdia'] = 'graphDiam'
+
+# Login authentication
+#LOGIN_URL = 'accounts/login' # TODO CHECK
+#user: MR Connectome 7/4/90
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'jhu.mrconnectome@gmail.com'
+EMAIL_HOST_PASSWORD = 'trial1mrocp'
+EMAIL_PORT = 587
+
+ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window;
