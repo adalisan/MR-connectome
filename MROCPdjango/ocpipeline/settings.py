@@ -201,7 +201,6 @@ VALID_FILE_TYPES['gdia'] = 'graphDiam'
 
 # Login authentication
 #LOGIN_URL = 'accounts/login' # TODO CHECK
-#user: MR Connectome 7/4/90
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'jhu.mrconnectome@gmail.com'
