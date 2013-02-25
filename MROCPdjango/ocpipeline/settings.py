@@ -205,7 +205,7 @@ VALID_FILE_TYPES['gdia'] = 'graphDiam'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'jhu.mrconnectome@gmail.com'
-EMAIL_HOST_PASSWORD = 'trial1mrocp'
+EMAIL_HOST_PASSWORD = '***********'
 EMAIL_PORT = 587
 
 ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window;
