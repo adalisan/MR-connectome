@@ -6,12 +6,14 @@
 @summary: A module containing the settings for the django project
 """
 import os.path
+import passload as pl
+
+UTIL_INFO = pl.loadpass(os.path.join(os.path.dirname(__file__), 'utils.data').replace('\\','/')) # data file
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-ADMINS = ( 'Disa Mhembere','disa@jhu.edu'
-    # ('Your Name', 'your_email@example.com'),
+ADMINS = ( UTIL_INFO['admin_name'],UTIL_INFO['admin_email'],
 )
 
 MANAGERS = ADMINS
@@ -19,9 +21,9 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'MRdjango',                      # Or path to database file if using sqlite3.
-        'USER': 'brain',                      # Not used with sqlite3.
-        'PASSWORD': '88brain88',                  # Not used with sqlite3.
+        'NAME': UTIL_INFO['dbase_name'],                      # Or path to database file if using sqlite3.
+        'USER': UTIL_INFO['dbase_user'],                      # Not used with sqlite3.
+        'PASSWORD': UTIL_INFO['dbase_pword'],                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
@@ -64,8 +66,8 @@ MEDIA_ROOT = '/data/projects/disa/OCPprojects/'
 MEDIA_URL = '/OCPprojects/'
 
 # Directory containing templates
-if os.path.exists('/Users/dmhembere44/MR-connectome/MROCPdjango/ocpipeline/templates/'):
-    TEMPLATE_DIR = '/Users/dmhembere44/MR-connectome/MROCPdjango/ocpipeline/templates/'
+if os.path.exists('/Users/disa/MR-connectome/MROCPdjango/ocpipeline/templates/'):
+    TEMPLATE_DIR = '/Users/disa/MR-connectome/MROCPdjango/ocpipeline/templates/'
 else:
     TEMPLATE_DIR = '/home/disa/MR-connectome/MROCPdjango/ocpipeline/templates/'
 
@@ -89,6 +91,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    os.path.join(os.path.dirname(__file__), 'templates/static/'),
 )
 
 # List of finder classes that know how to find static files in
@@ -96,11 +99,11 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '_jxqk5$)$5w7nlpr&amp;93d&amp;eevslgt3eer8z=@#d-^qv&amp;rmr=7ca'
+SECRET_KEY = UTIL_INFO['secret_key']
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -129,7 +132,6 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     os.path.join(os.path.dirname(__file__), 'templates').replace('\\','/'),
-    '/Users/dmhembere44/MR-connectome/MROCPdjango/ocpipeline/templates',
 )
 
 INSTALLED_APPS = (
@@ -202,9 +204,9 @@ VALID_FILE_TYPES['gdia'] = 'graphDiam'
 # Login authentication
 #LOGIN_URL = 'accounts/login' # TODO CHECK
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'jhu.mrconnectome@gmail.com'
-EMAIL_HOST_PASSWORD = '***********'
+EMAIL_HOST = UTIL_INFO['email_host']
+EMAIL_HOST_USER = UTIL_INFO['email_host_user']
+EMAIL_HOST_PASSWORD = UTIL_INFO['email_host_password']
 EMAIL_PORT = 587
 
 ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window;
