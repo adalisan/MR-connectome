@@ -81,9 +81,9 @@ print (PROCESSING_SCRIPTS)
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
 
-if os.path.exists('/home/disa/MR-connectome/MROCPdjango/static'):
+if os.path.exists('/home/disa/MR-connectome/MROCPdjango'): # Linux development
   STATIC_ROOT = '/home/disa/MR-connectome/MROCPdjango/static'
-else:
+else: # DM Mac development
   STATIC_ROOT = '/Users/disa/MR-connectome/MROCPdjango/static'
 
 
