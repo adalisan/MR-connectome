@@ -99,7 +99,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    #'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -115,11 +115,11 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
 ROOT_URLCONF = 'ocpipeline.urls'
@@ -204,9 +204,9 @@ VALID_FILE_TYPES['gdia'] = 'graphDiam'
 # Login authentication
 #LOGIN_URL = 'accounts/login' # TODO CHECK
 EMAIL_USE_TLS = True
-EMAIL_HOST = UTIL_INFO['email_host']
-EMAIL_HOST_USER = UTIL_INFO['email_host_user']
-EMAIL_HOST_PASSWORD = UTIL_INFO['email_host_password']
-EMAIL_PORT = 587
+EMAIL_HOST = UTIL_INFO['email_host'] # smtp.cs.jhu.edu
+EMAIL_HOST_USER = UTIL_INFO['email_host_user'] #
+EMAIL_HOST_PASSWORD = UTIL_INFO['email_host_password'] #
+EMAIL_PORT = 587 # 25
 
 ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window;
