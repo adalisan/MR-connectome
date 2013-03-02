@@ -6,28 +6,17 @@
 @summary: A module containing the settings for the django project
 """
 import os.path
-import passload as pl
 
-UTIL_INFO = pl.loadpass(os.path.join(os.path.dirname(__file__), 'utils.data').replace('\\','/')) # data file
+from settings_secret import *
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-ADMINS = ( UTIL_INFO['admin_name'],UTIL_INFO['admin_email'],
-)
+#ADMINS - moved
 
 MANAGERS = ADMINS
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': UTIL_INFO['dbase_name'],                      # Or path to database file if using sqlite3.
-        'USER': UTIL_INFO['dbase_user'],                      # Not used with sqlite3.
-        'PASSWORD': UTIL_INFO['dbase_pword'],                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-    }
-}
+# DATABASES - moved
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -108,7 +97,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = UTIL_INFO['secret_key']
+# SECRET_KEY - moved
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -217,12 +206,4 @@ VALID_FILE_TYPES['fg'] = 'fibergraph'
 VALID_FILE_TYPES['lcc'] = 'lrgstConnComp'
 VALID_FILE_TYPES['gdia'] = 'graphDiam'
 
-# Login authentication
-#LOGIN_URL = 'accounts/login' # TODO CHECK
-EMAIL_USE_TLS = True
-EMAIL_HOST = UTIL_INFO['email_host'] # smtp.cs.jhu.edu
-EMAIL_HOST_USER = UTIL_INFO['email_host_user'] #
-EMAIL_HOST_PASSWORD = UTIL_INFO['email_host_password'] #
-EMAIL_PORT = 587 # 25
-
-ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window;
+# Login authentication - moved
