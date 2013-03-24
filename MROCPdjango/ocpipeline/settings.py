@@ -209,6 +209,3 @@ VALID_FILE_TYPES['lcc'] = 'lrgstConnComp'
 VALID_FILE_TYPES['gdia'] = 'graphDiam'
 
 # Login authentication - moved
-
-# DM Added
-SESSION_EXPIRE_AT_BROWSER_CLOSE = True
