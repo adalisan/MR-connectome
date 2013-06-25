@@ -1,12 +1,113 @@
-This project contains several tools to play with fiber data in
-MRI Studio format [ http://www.mristudio.org/ ].
+MR-connectome repo:
+==================
 
-The mrcap subdirectory contains the source code that generates
-graphs from dMRI streamlines.  It produces two varieties of output:
-  * smallgraphs: these use brain atlas regions of interest (70) to make 70x70 matrixes
-  * biggraphs: these create connectivities among greymatter voxels.
+An easily integrable package that builds connectome graphs from derived data
+products and gives the ability to compute invariants. This is a minimal subset of the MR-connectome repo:
+https://github.com/openconnectome/MR-connectome. The full repo includes  code for web services that perform the same and additional operations - all found at openconnecto.me/graph-services/.
 
-The cmapper directory contains simple tools to manipulate 
-connectome mapper outputs.
+This repo's code is currently used as a backend add-on to the JHU-APL DOLPHIN pipeline for connectomes.
 
-web page: http://openconnectome.github.com/MR-connectome/
+INSTALLATION INSTRUCTIONS:
+==========================
+
+* TESTED ON:
+============
+64-bit Linux Ubuntu 12.04 LTS
+64 Mac OSX 10.7.5
+
+Dependencies:
+=============
+Add to PYTHONPATH:
+If Install directory is ~/
+Add to ~/.bashrc:
+export PYTHONPATH=$PYTHONPATH:~/MR-connectome/
+export PYTHONPATH=$PYTHONPATH:$~/MR-connectome/MROCPdjango/
+
+This can be done as follows:
+echo 'export PYTHONPATH=$PYTHONPATH:~/MR-connectome/' >> ~/.bashrc
+echo 'export PYTHONPATH=$PYTHONPATH:~/MR-connectome/MROCPdjango/' >> ~/.bashrc
+
+If install directory is different - replace '~' with the install directory path.
+
+Clean install:
+================
+# update & upgrade
+sudo apt-get update
+sudo apt-get upgrade
+
+# Python installs
+sudo apt-get install python-dev
+sudo apt-get install python-setuptools
+sudo easy_install pip
+
+# GCC compiler
+sudo apt-get install build-essential
+
+# Cython
+sudo easy_install cython
+
+# Numpy
+sudo pip install numpy
+exec bash
+
+# Scipy
+sudo apt-get install libatlas-base-dev gfortran
+sudo pip install scipy
+
+# Matplotlib
+sudo apt-get install python-matplotlib
+
+# cd into the ../mrcap directory.
+# Build cython zindex module
+sudo python setup.py install
+
+The following should be installed when you are done:
+pip
+easy_install
+Python 2.7
+gcc compiler
+gfortran 77 compiler
+Cython version 0.16
+Scipy version 0.10.1
+Numpy version 1.5.1
+Matplotlib version 1.1.1rc
+Zindex
+
+Examples:
+=========
+
+INSTALLDIR=$(pwd) # *NOTE if install dir is different alter this.
+Example located in INSTALLDIR/MR-connectome/MROCPdjango/computation/composite/examples
+
+Once in example directory, Simply type ./example.sh . This will run small graph generation code & 6 invariant computations.
+opening the example.sh file and uncommenting other lines can be done to run the same code, but for a big graph and largest connected component.
+
+  Example results:
+  ================
+  -Small example result is located in INSTALLDIR/MR-connectome/MROCPdjango/computation/composite/examples/testresult/small
+    - Verify correct output in this fashion from the python interpreter:
+      import numpy as np
+      computed_data_prod = np.load('filename.npy')
+      truth_data_prod = np.load('filename.npy')
+      np.array_equal(computed_data_prod, truth_data_prod)
+
+    * Note that this may not work for 32 bit systems as the test results were computed using 64 bit architectures. As a result precision may differ with decimal points affecting clustering coefficient, eigen pairs, max ave degree etc.
+
+  -Big example result is located in INSTALLDIR/MR-connectome/MROCPdjango/computation/composite/examples/testresult/lccbig
+    - Verification for correctness is the same as small graphs.
+
+
+Documentation:
+==============
+pydoc can be run for the entire project using the executable python script:
+./INSTALLDIR/MR-connectome/docgenerator
+The resulting html can be found in INSTALLDIR/MR-connectome/doc (unless otherwise specified so with a command line flag)
+For help type: ./INSTALLDIR/MR-connectome/docgenerator -h
+
+Integration test:
+=================
+A single test is available to test all modules will compile. The only way to test for runtime errors "out of the box" is to run the example script as noted above. The integration test can be invoked via ./INSTALLDIR/MR-connectome/docgenerator. The script all scripts in the package with helpful info. If an error is encountered you will be prompted to continue or stop to fix the error!
+
+Finally - enjoy!
+Problems: Contact us at: jhu.mrocp@cs.jhu.edu
+Thanks	
