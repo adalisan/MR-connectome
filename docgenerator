@@ -1,0 +1,54 @@
+#!/usr/bin/python
+
+# docgenerator
+# Created by Disa Mhembere on 2013-05-31.
+# Email: disa@jhu.edu
+# Copyright (c) 2013. All rights reserved.
+
+import os
+import argparse
+import subprocess
+from computation.utils.file_util import recursive_listdir
+from computation.utils.file_util import makeDirIfNone
+import sys
+
+def gendocs(drctys, web, savedir):
+  """
+  Generate documentation for all code in the package.
+
+  positional args:
+  ===============
+  drctys - a list of directories for which to
+
+  """
+  web = "" if not web else "-w"
+
+  makeDirIfNone(savedir)
+
+  for dirs in drctys:
+    for file in recursive_listdir(dirs):
+
+      if os.path.splitext(file)[1] == ".py" or ( os.path.splitext(file)[1] == ""  and not file[-2:] == "cc"):
+        if not ( os.path.basename(file) == "setup.py" or os.path.basename(file) == "README" ):
+          #print "pydoc", web, file
+          subprocess.call(["pydoc", web, file])
+
+          if savedir and web:
+            print 'mv', os.path.splitext(os.path.basename(file))[0] + ".html", savedir + "\n"
+            subprocess.call(["mv", os.path.splitext(os.path.basename(file))[0] + ".html", savedir])
+
+def main():
+  parser = argparse.ArgumentParser(description='Generate documents for the requested files under the directories\
+                                   specified by the -d flag. If -d flag is undefined all package directories are used.')
+  parser.add_argument('-d', '--directory_list', nargs ='+', default=[os.path.join('MROCPdjango', 'computation'), 'mrcap'],
+                      action='store', help='A space separated list of directories for which to generate pydoc documentation')
+  # optional
+  parser.add_argument('-W', '--not_web', action='store_false', default=True, help='html web enabled documentation')
+  parser.add_argument('-s', '--savedir', action='store', default='doc',
+                      help='directory where to save the resulting pydocs generated. Default is current directory `doc`')
+  result = parser.parse_args()
+
+  gendocs(result.directory_list, result.not_web, result.savedir)
+
+if __name__ == '__main__':
+  main()
